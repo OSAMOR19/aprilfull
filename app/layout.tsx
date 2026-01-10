@@ -1,7 +1,8 @@
 import "./globals.css";
-import { ClientLayout } from "@/components/Layout/ClientLayout";
 import { Metadata } from "next";
-import { montserrat, roboto, nunito } from "./font";
+import { polysans } from "./font";
+import { ThemeProvider } from "next-themes";
+import { Navbar } from "@/components/Layout/Navbar";
 
 export const metadata: Metadata = {
   title: {
@@ -29,10 +30,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body
-        className={`${montserrat.variable} ${roboto.variable} ${nunito.variable} bg-[#F8F8F8]`}
-      >
-        <ClientLayout>{children}</ClientLayout>
+      <body className={`${polysans.variable} bg-[#F8F8F8]`}>
+        <ThemeProvider attribute="class" defaultTheme="system">
+          <Navbar />
+          <div className="">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

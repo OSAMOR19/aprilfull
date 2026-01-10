@@ -35,3 +35,24 @@ export const nunito = localFont({
     },
   ],
 });
+export const polysans = localFont({
+  variable: "--font-polysans", // <— name of the CSS custom property
+  display: "swap",
+  src: [
+    {
+      path: "../public/fonts/polysanstrial-slim.otf",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/polysanstrial-neutral.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/polysanstrial-bulky.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+});

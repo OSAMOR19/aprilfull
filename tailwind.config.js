@@ -1,5 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+  darkMode: "class",
+
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./pages/**/*.{js,ts,jsx,tsx}",
@@ -32,6 +34,7 @@ module.exports = {
         roboto: ["var(--font-roboto)", "sans-serif"],
         mont: ["var(--font-montserrat)", "sans-serif"],
         nunito: ["var(--font-nunito)", "sans-serif"],
+        polysans: ["var(--font-polysans)", "sans-serif"],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
