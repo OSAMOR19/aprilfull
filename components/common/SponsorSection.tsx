@@ -2,18 +2,18 @@
 import Image from "next/image";
 
 const sponsors = [
-  { id: 1, name: "Bitget Wallet", logo: "/images/logos/bitget.png" },
-  { id: 2, name: "Avalanche", logo: "/images/logos/avalanche.png" },
-  { id: 3, name: "Asset Chain", logo: "/images/logos/assetchain.png" },
-  { id: 4, name: "CoinEx", logo: "/images/logos/coinex.png" },
-  { id: 5, name: "Vent", logo: "/images/logos/vent.png" },
+  { id: 1, name: "Bitget Wallet", logo: "/images/sponsor 01.png" },
+  { id: 2, name: "Avalanche", logo: "/images/sponsor 02.png" },
+  { id: 3, name: "Asset Chain", logo: "/images/sponsor 03.png" },
+  { id: 4, name: "CoinEx", logo: "/images/sponsor 04.png" },
+  { id: 5, name: "Vent", logo: "/images/sponsor 05.png" },
 ];
 
 export function SponsorsSection() {
   return (
-    <section className="py-20 bg-black dark:bg-gray-950">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-4xl md:text-5xl font-bold text-white text-center mb-16">
+    <section className="p-10 bg-black dark:bg-gray-950">
+      <div className="">
+        <h2 className="text-4xl  font-bold text-white text-center mb-16">
           Past Gold Sponsors
         </h2>
 

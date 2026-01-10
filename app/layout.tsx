@@ -3,6 +3,7 @@ import { Metadata } from "next";
 import { polysans } from "./font";
 import { ThemeProvider } from "next-themes";
 import { Navbar } from "@/components/Layout/Navbar";
+import { FooterWithContact } from "@/components/Layout/Footer";
 
 export const metadata: Metadata = {
   title: {
@@ -34,6 +35,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system">
           <Navbar />
           <div className="">{children}</div>
+          <FooterWithContact />
         </ThemeProvider>
       </body>
     </html>
