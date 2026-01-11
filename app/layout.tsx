@@ -7,20 +7,15 @@ import { FooterWithContact } from "@/components/Layout/Footer";
 
 export const metadata: Metadata = {
   title: {
-    template: "Cre8core - %s",
-    default: "Cre8core",
+    template: "Blockchain - %s",
+    default: "Blockchain Website",
   },
   description:
-    "Send, Spend, Shop Perform cross-border transaction with ease on Cre8core.",
+    "Blockchain Website ",
   icons: { icon: "/images/favicon.png" },
   keywords: [
     "cross-border payments",
-    "NFC",
-    "NFC payments",
-    "Contactless payments",
-    "QR payments",
-    "international money transfer",
-    "send money to Africa",
+   
   ],
 };
 
