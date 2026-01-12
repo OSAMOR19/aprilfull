@@ -7,7 +7,7 @@ export function Logo() {
     <Link href="/" className="flex items-center space-x-2">
       {/* Light mode logo */}
       <Image
-        src="/public/images/Logo.svg"
+        src="/images/Logo.svg"
         alt="AprilFull"
         width={120}
         height={40}
@@ -18,7 +18,7 @@ export function Logo() {
 
       {/* Dark mode logo */}
       <Image
-        src="/public/images/Logo-white.svg"
+        src="/images/Logo-white.svg"
         alt="AprilFull"
         width={120}
         height={40}
