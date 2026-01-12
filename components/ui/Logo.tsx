@@ -1,15 +1,13 @@
 // components/ui/Logo.tsx
 import Link from "next/link";
 import Image from "next/image";
-import dark from "../../public/images/Logo.svg";
-import light from "../../public/images/Logo-white.svg";
 
 export function Logo() {
   return (
     <Link href="/" className="flex items-center space-x-2">
       {/* Light mode logo */}
       <Image
-        src={dark}
+        src="/public/images/Logo.svg"
         alt="AprilFull"
         width={120}
         height={40}
@@ -20,7 +18,7 @@ export function Logo() {
 
       {/* Dark mode logo */}
       <Image
-        src={light}
+        src="/public/images/Logo-white.svg"
         alt="AprilFull"
         width={120}
         height={40}
