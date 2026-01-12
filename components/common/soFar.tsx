@@ -6,6 +6,7 @@ const stats = [
     id: 1,
     number: "2 States",
     description: "Lagos & Delta",
+    className: "col-span-2",
   },
   {
     id: 2,
@@ -21,7 +22,7 @@ const stats = [
 
 export function ReachSection() {
   return (
-    <section className="py-32 bg-linear-to-br bg-[#F8F1FD] dark:bg-[#22132d]">
+    <section className="md:py-32 py-5 bg-linear-to-br bg-[#F8F1FD] dark:bg-[#22132d]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="relative flex flex-col lg:flex-row items-center gap-10">
           {/* Left Side - Image */}
@@ -40,16 +41,18 @@ export function ReachSection() {
                 Our Reach So Far
               </h2>
               <p className="text-xl text-gray-700 dark:text-gray-300 mb-3">
-                Here is how far we have gone on the mission <br /> to Educate &
-                Entertain
+                Here is how far we have gone on the mission{" "}
+                <br className="hidden md:block" /> to Educate & Entertain
               </p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {stats.map((stat) => (
                 <div
                   key={stat.id}
-                  className="bg-[#C17BFF] rounded-2xl p-6 text-center text-white"
+                  className={`bg-[#C17BFF] rounded-2xl p-6 text-center text-white ${
+                    stat.className || ""
+                  }`}
                 >
                   <div className="text-3xl md:text-4xl font-black mb-2 whitespace-nowrap">
                     {stat.number}

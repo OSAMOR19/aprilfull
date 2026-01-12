@@ -1,6 +1,8 @@
+import Image from "next/image";
+
 export function HeroSection() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full md:min-h-screen">
       <div
         className="relative"
         style={{
@@ -44,50 +46,60 @@ export function HeroSection() {
         </section>
       </div>
       {/* SECTION 2: Images - 500px height, NO GAPS */}
-      <div className="grid grid-cols-5 gap-0 -mt-28 overflow-clip">
-        <div className="h-[400px] w-full">
-          <img
-            className="w-full h-full object-cover"
+      <div className="grid grid-cols-5 gap-0 -mt-38 overflow-clip">
+        <div className="h-[200px] md:h-[500px] w-full">
+          <Image
+            className="w-full h-full md:h-[500px] object-cover"
             src="/images/01.jpg"
             alt=""
             width={300}
-            height={500}
+            height={600}
+            priority
+            loading="eager"
           />
         </div>
-        <div className="h-[400px] w-full">
-          <img
-            className="w-full h-full object-cover"
+        <div className="h-[200px] md:h-[500px] w-full">
+          <Image
+            className="w-full h-full md:h-[500px] object-cover"
             src="/images/02.png"
             alt=""
             width={300}
-            height={500}
+            height={600}
+            priority
+            loading="eager"
           />
         </div>
-        <div className="h-[400px] w-full">
-          <img
-            className="w-full h-full object-center mt-9"
+        <div className="h-[200px] md:h-[500px] w-full">
+          <Image
+            className="w-full h-full md:h-[500px] object-center mt-16"
             src="/images/03.png"
             alt=""
             width={300}
-            height={500}
+            height={600}
+            priority
+            loading="eager"
           />
         </div>
-        <div className="h-[400px] w-full">
-          <img
-            className="w-full h-full object-cover"
+        <div className="h-[200px] md:h-[500px] w-full">
+          <Image
+            className="w-full h-full md:h-[500px] object-cover"
             src="/images/04.png"
             alt=""
             width={300}
-            height={500}
+            height={600}
+            priority
+            loading="eager"
           />
         </div>
-        <div className="h-[400px] w-full">
-          <img
-            className="w-full h-full object-cover"
+        <div className="h-[200px] md:h-[500px] w-full">
+          <Image
+            className="w-full h-full md:h-[500px] object-cover "
             src="/images/05.png"
             alt=""
             width={300}
-            height={500}
+            height={600}
+            priority
+            loading="eager"
           />
         </div>
       </div>

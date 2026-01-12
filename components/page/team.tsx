@@ -69,14 +69,14 @@ const Team = () => {
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center text-[#CC9CFF] mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold md:mb-2">
             Meet the{" "}
             <span className=" text-black dark:text-white drop-shadow-[0_0_10px_rgba(168,85,247,0.5)]">
               TEAM
             </span>{" "}
             building the
           </h2>
-          <h3 className="text-2xl md:text-3xl font-semibold mb-2">
+          <h3 className="text-2xl md:text-3xl font-semibold md:mb-2">
             biggest global blend of
           </h3>
           <h1 className="text-2xl md:text-3xl font-bold drop-shadow-[0_0_15px_rgba(168,85,247,0.7)]">
