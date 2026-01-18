@@ -21,7 +21,7 @@ export function Logo() {
         alt="AprilFull"
         width={120}
         height={40}
-        className="h-8 w-auto hidden dark:block"
+        className="h-8 w-auto "
         loading="eager"
       />
     </Link>
