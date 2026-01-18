@@ -1,24 +1,21 @@
+// components/ui/Logo.tsx
+import Link from "next/link";
+import { useEffect, useState } from "react";
+
 export function Logo() {
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
-    <>
-      {/* Dark mode logo */}
-      <img
-        src="/images/logo-white.svg"
-        alt="AprilFull"
-        width={120}
-        height={40}
-        className="h-8 w-auto hidden dark:block"
-        loading="eager"
+    <Link href="/" className="flex items-center space-x-2">
+      <div
+        className="h-8 w-[120px] bg-contain bg-no-repeat bg-center 
+                   bg-[url('/images/logo-dark.svg')] 
+                   dark:bg-[url('/images/logo-white.svg')]"
       />
-      {/* Light mode logo */}
-      <img
-        src="/images/logo-dark.svg"
-        alt="AprilFull"
-        width={120}
-        height={40}
-        className="h-8 w-auto block dark:hidden"
-        loading="eager"
-      />
-    </>
+    </Link>
   );
 }
