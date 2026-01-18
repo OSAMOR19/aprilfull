@@ -14,7 +14,7 @@ export function Logo() {
       <div
         className="h-8 w-[120px] bg-contain bg-no-repeat bg-center 
                    bg-[url('/images/logo-dark.svg')] 
-                   dark:bg-[url('/images/logo-white.svg')]"
+                   dark:bg-[url('/images/logo-light.svg')]"
       />
     </Link>
   );
