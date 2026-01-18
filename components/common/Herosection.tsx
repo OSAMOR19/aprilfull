@@ -71,7 +71,7 @@ export function HeroSection() {
         </div>
         <div className="h-[200px] md:h-[500px] w-full">
           <Image
-            className="w-full h-full md:h-[500px] object-center mt-16"
+            className="w-full h-full md:h-[500px] object-cover mt-20 "
             src="/images/03.png"
             alt=""
             width={300}
