@@ -10,13 +10,9 @@ export const metadata: Metadata = {
     template: "Blockchain - %s",
     default: "Blockchain Website",
   },
-  description:
-    "Blockchain Website ",
+  description: "Blockchain Website ",
   icons: { icon: "/images/favicon.png" },
-  keywords: [
-    "cross-border payments",
-   
-  ],
+  keywords: ["cross-border payments"],
 };
 
 export default function RootLayout({
@@ -25,7 +21,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body className={`${polysans.variable} bg-[#F8F8F8]`}>
         <ThemeProvider attribute="class" defaultTheme="system">
           <Navbar />
