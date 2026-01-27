@@ -93,7 +93,7 @@ export function FAQSection() {
               </button>
 
               {openId === faq.id && (
-                <div className="pb-6 text-[#D3B9EF] leading-relaxed border-t border-cyan-900/30 pt-4">
+                <div className="pb-6 text-[#964BE6] dark:text-[#D3B9EF] leading-relaxed border-t border-cyan-900/30 pt-4">
                   {faq.answer}
                 </div>
               )}

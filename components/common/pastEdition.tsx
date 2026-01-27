@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 import { FaArrowRightLong } from "react-icons/fa6";
 
@@ -9,7 +10,7 @@ const PastEditions = () => {
       image: "/images/edition01.png",
       location: "Victoria Island, Lagos State, Nigeria",
       description:
-        "AprilFull brought together over 100 attendees from 7 states across Nigeria, featuring a vibrant mix of Web3 enthusiasts, Web2 professionals, influencers, founders, and tech learners. <br /> The event delivered keynote sessions from blockchain pioneers, insightful panel discussions on emerging trends, and live performances that made blockchain education fun, engaging, and highly relatable.",
+        "AprilFull brought together over 100 attendees from 7 states across Nigeria, featuring a vibrant mix of Web3 enthusiasts, Web2 professionals, influencers, founders, and tech learners. The event delivered keynote sessions from blockchain pioneers, insightful panel discussions on emerging trends, and live performances that made blockchain education fun, engaging, and highly relatable.",
     },
     {
       id: 2,
@@ -52,9 +53,12 @@ const PastEditions = () => {
         >
           {/* overlay */}
           <div className="h-full flex flex-col justify-end p-6 ">
-            <p className="text-white lg:w-40 inline-flex items-center gap-2 font-medium text-lg border-2 p-3 rounded-2xl border-white cursor-pointer">
+            <Link
+              href={"/gallery"}
+              className="text-white lg:w-40 inline-flex items-center gap-2 font-medium text-lg border-2 p-3 rounded-2xl border-white cursor-pointer"
+            >
               View Gallery <FaArrowRightLong />
-            </p>
+            </Link>
           </div>
         </div>
         <div className="w-full lg:w-[500px] px-5">

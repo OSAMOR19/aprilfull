@@ -6,11 +6,11 @@ export function HeroSection() {
       <div
         className="relative"
         style={{
-          clipPath: "ellipse(90% 100% at 50% 0%)",
+          clipPath: "ellipse(120% 100% at 50% 0%)",
         }}
       >
         {/* Hero Content Section with curve cut-out */}
-        <section className="relative h-[650px] flex items-center justify-center bg-linear-to-tl dark:from-purple-900 dark:via-gray-900 dark:to-black from-purple-50 to-white via-purple-200 ">
+        <section className="relative h-[500px] md:h-[650px] flex items-center justify-center bg-linear-to-tl dark:from-purple-900 dark:via-gray-900 dark:to-black from-purple-50 to-white via-purple-200 ">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center z-10 relative">
             <div className="inline-block ">
               <h1 className="text-4xl sm:text-5xl md:text-7xl font-black">
@@ -46,8 +46,8 @@ export function HeroSection() {
         </section>
       </div>
       {/* SECTION 2: Images - 500px height, NO GAPS */}
-      <div className="grid grid-cols-5 gap-0 -mt-38 overflow-clip">
-        <div className="h-[200px] md:h-[500px] w-full">
+      <div className="grid grid-cols-5 gap-0 -mt-28 md:-mt-38 overflow-clip">
+        <div className="h-[250px] md:h-[500px] w-full">
           <Image
             className="w-full h-full md:h-[500px] object-cover"
             src="/images/01.jpg"
@@ -58,7 +58,7 @@ export function HeroSection() {
             loading="eager"
           />
         </div>
-        <div className="h-[200px] md:h-[500px] w-full">
+        <div className="h-[250px] md:h-[500px] w-full">
           <Image
             className="w-full h-full md:h-[500px] object-cover"
             src="/images/02.png"
@@ -69,7 +69,7 @@ export function HeroSection() {
             loading="eager"
           />
         </div>
-        <div className="h-[200px] md:h-[500px] w-full">
+        <div className="h-[250px] md:h-[500px] w-full">
           <Image
             className="w-full h-full md:h-[500px] object-cover mt-20 "
             src="/images/03.png"
@@ -80,9 +80,9 @@ export function HeroSection() {
             loading="eager"
           />
         </div>
-        <div className="h-[200px] md:h-[500px] w-full">
+        <div className="h-[250px] md:h-[500px] w-full">
           <Image
-            className="w-full h-full md:h-[500px] object-cover"
+            className="w-full h-full md:h-[500px] object-cover mt-20  md:mt-0"
             src="/images/04.png"
             alt=""
             width={300}
@@ -91,9 +91,9 @@ export function HeroSection() {
             loading="eager"
           />
         </div>
-        <div className="h-[200px] md:h-[500px] w-full">
+        <div className="h-[250px] md:h-[500px] w-full">
           <Image
-            className="w-full h-full md:h-[500px] object-cover "
+            className="w-full h-full md:h-[500px] object-cover mt-10  md:mt-0"
             src="/images/05.png"
             alt=""
             width={300}
