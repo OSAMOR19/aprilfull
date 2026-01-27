@@ -8,9 +8,9 @@ import { FooterWithContact } from "@/components/Layout/Footer";
 export const metadata: Metadata = {
   title: {
     template: "Blockchain - %s",
-    default: "Blockchain Website",
+    default: "Blockchain Entertainment",
   },
-  description: "Blockchain Website ",
+  description: "Blockchain Entertainment ",
   icons: { icon: "/images/favicon.png" },
   keywords: ["cross-border payments"],
 };
