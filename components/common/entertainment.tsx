@@ -15,7 +15,7 @@ export function EntertainmentSection() {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (sectionRef.current) {
@@ -42,10 +42,12 @@ export function EntertainmentSection() {
           >
             <div className="flex-1">
               <h2 className=" text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black text-black leading-[1.1] ">
-                Entertain <span className="text-white">-</span>
-                <br />
+                Entertain
+                <span className="text-white hidden lg:inline-block"> -</span>
+                <br className=" hidden lg:block" />
                 Ment
-                <br />
+                <br className=" hidden lg:block" />{" "}
+                <span className="text-white hidden lg:inline-block"> </span>
                 Matters
                 <br />
                 In <span className="text-white/70">WEB3</span>
@@ -77,19 +79,19 @@ export function EntertainmentSection() {
               }`}
             >
               <div className="space-y-4">
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-sm md:text-base  ">
                   AprilFull combines blockchain education with dynamic
                   entertainment, to deliver an unparalleled experience for
                   attendees.
                 </p>
 
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-sm md:text-base  ">
                   By integrating education with engagement, Aprilfull ensures
                   participants remain captivated, while gaining invaluable
                   insights about Web3.
                 </p>
 
-                <p className="text-sm md:text-base lg:text-lg leading-relaxed">
+                <p className="text-sm md:text-base  ">
                   B3T continues to redefine how blockchain knowledge is shared
                   on the continent.
                 </p>
@@ -98,7 +100,7 @@ export function EntertainmentSection() {
 
             {/* Image Card */}
             <div
-              className={`relative h-[280px] md:h-[320px] lg:h-[350px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 delay-400 ${
+              className={`relative h-[280px] rounded-3xl overflow-hidden shadow-2xl transition-all duration-700 delay-400 ${
                 isVisible
                   ? "opacity-100 translate-y-0"
                   : "opacity-0 translate-y-10"

@@ -186,3 +186,30 @@
   background-repeat: no-repeat;
   background-position: center;
 }
+
+@layer utilities {
+  .clip-path-\[ellipse\(120\%_100\%_at_50\%_0\%\)\] {
+    clip-path: ellipse(120% 100% at 50% 0%);
+  }
+
+  .clip-path-\[ellipse\(120\%_100\%_at_50\%_100\%\)\] {
+    clip-path: ellipse(120% 100% at 50% 100%);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.animate-scroll:hover {
+  animation-play-state: paused;
+}
