@@ -43,6 +43,15 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        scroll: "scroll 20s linear infinite",
+      },
     },
   },
   plugins: [],
