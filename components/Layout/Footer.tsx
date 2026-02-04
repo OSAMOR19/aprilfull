@@ -24,18 +24,27 @@ export function FooterWithContact() {
             />
             <div className="flex gap-6">
               <a
-                href="mailto:contact@aprilfull.com"
+                href="mailto:officialaprilfull@gmail.com"
                 className="text-white hover:text-purple-400"
               >
                 <CiMail size={24} />
               </a>
-              <a href="#" className="text-white hover:text-purple-400">
+              <a
+                href="https://www.linkedin.com/company/aprilfull-b3t/"
+                className="text-white hover:text-purple-400"
+              >
                 <TfiLinkedin size={24} />
               </a>
-              <a href="#" className="text-white hover:text-purple-400">
+              <a
+                href="https://www.tiktok.com/@officialaprilfull?_r=1&_t=ZS-93bhRPbzazt"
+                className="text-white hover:text-purple-400"
+              >
                 <FaTiktok size={24} />
               </a>
-              <a href="#" className="text-white hover:text-purple-400">
+              <a
+                href="https://x.com/aprilfullshow?s=21"
+                className="text-white hover:text-purple-400"
+              >
                 <FaXTwitter size={24} />
               </a>
             </div>
