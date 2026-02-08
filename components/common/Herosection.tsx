@@ -17,26 +17,27 @@ export function HeroSection() {
               <span className="text-purple-400">&</span>
               <br />
               <span className="text-black dark:text-white">Entertainment </span>
+              <br className="md:hidden" />
               <span className="dark:text-purple-400 text-black inline-flex items-center justify-center">
-                (
+                <span className="-mr-1 md:-mr-2">(</span>
                 <img
                   src="/images/bet-dark.svg"
                   alt="Moon"
-                  className="w-12 h-12 md:w-28 md:h-28 ml-2 dark:inline-block hidden"
+                  className="w-14 h-14 md:w-28 md:h-28 dark:inline-block hidden"
                 />
                 <img
                   src="/images/bet-light.svg"
                   alt="Moon"
-                  className="w-12 h-12 md:w-28 md:h-28 ml-2 dark:hidden inline-block"
+                  className="w-14 h-14 md:w-28 md:h-28 dark:hidden inline-block"
                 />
-                )
+                <span className="-ml-2 md:-ml-3">)</span>
               </span>
             </h1>
           </div>
 
           <p className="text-xl md:text-2xl dark:text-gray-300 text-[#140000] mt-6 max-w-3xl mx-auto">
             Africa's Premier WEB3 entertainment event
-            <br />
+            <br className="hidden md:block" />
             where innovation meets creativity
           </p>
         </div>
