@@ -104,6 +104,14 @@ export default function TicketBooking() {
   >(null);
   const [isPaying, setIsPaying] = useState(false);
   const [copiedField, setCopiedField] = useState<string | null>(null);
+  const [txHash, setTxHash] = useState("");
+  const [cryptoNetwork, setCryptoNetwork] = useState<"trc20" | "erc20">("trc20");
+  const [cryptoSubmitStatus, setCryptoSubmitStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
+  const [cryptoOrderRef] = useState(
+    () => `APRILFULL-${Date.now().toString(36).toUpperCase()}`
+  );
 
   const totalTickets = Object.values(quantities).reduce((a, b) => a + b, 0);
   const totalAmount = TICKET_TYPES.reduce(
@@ -133,6 +141,8 @@ export default function TicketBooking() {
     setPaymentMethod(null);
     setQuantities(Object.fromEntries(TICKET_TYPES.map((t) => [t.id, 0])));
     setBillingInfo({ firstName: "", lastName: "", email: "", phone: "" });
+    setTxHash("");
+    setCryptoSubmitStatus("idle");
   };
 
   const handlePaystackPayment = () => {
@@ -196,10 +206,42 @@ export default function TicketBooking() {
     }
   };
 
+  const handleCryptoSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!txHash.trim()) return;
+    setCryptoSubmitStatus("loading");
+    try {
+      const res = await fetch("/api/crypto-payment", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          txHash: txHash.trim(),
+          network: cryptoNetwork,
+          email: billingInfo.email,
+          amountUsdt: usdtAmount,
+          amountNgn: formatPrice(totalAmount),
+          paymentRef: cryptoOrderRef,
+          orderDetails: TICKET_TYPES.filter((t) => quantities[t.id] > 0).map(
+            (t) => `${t.name} × ${quantities[t.id]}`
+          ),
+          customerName: `${billingInfo.firstName} ${billingInfo.lastName}`,
+        }),
+      });
+      const data = await res.json();
+      if (data.success) {
+        setCryptoSubmitStatus("success");
+        setTxHash("");
+      } else {
+        setCryptoSubmitStatus("error");
+      }
+    } catch {
+      setCryptoSubmitStatus("error");
+    }
+  };
+
   const canProceedToBilling = totalTickets > 0;
   const paystackReady = !!process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY;
   const usdtAmount = (totalAmount / NGN_TO_USD_RATE).toFixed(2);
-  const paymentRef = `APRILFULL-${Date.now().toString(36).toUpperCase()}`;
   const steps = [
     { num: 1, label: "Select ticket" },
     { num: 2, label: "Billing information" },
@@ -431,11 +473,6 @@ export default function TicketBooking() {
                       >
                         {isPaying ? "Processing..." : "Pay with Paystack"}
                       </Button>
-                      {!paystackReady && (
-                        <p className="text-xs text-amber-600 dark:text-amber-400">
-                          Paystack is not configured. Add NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY to enable.
-                        </p>
-                      )}
                     </div>
                   )}
 
@@ -449,11 +486,11 @@ export default function TicketBooking() {
                         <div>
                           <label className="text-xs font-medium text-gray-500 block mb-1">Payment Reference (include in memo)</label>
                           <div className="flex gap-2">
-                            <code className="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-800 rounded text-sm truncate">{paymentRef}</code>
+                            <code className="flex-1 px-3 py-2 bg-gray-100 dark:bg-gray-800 rounded text-sm truncate">{cryptoOrderRef}</code>
                             <Button
                               variant="outline"
                               size="sm"
-                              onClick={() => copyToClipboard(paymentRef, "ref")}
+                              onClick={() => copyToClipboard(cryptoOrderRef, "ref")}
                               className="shrink-0"
                             >
                               {copiedField === "ref" ? <Check size={16} /> : <Copy size={16} />}
@@ -492,12 +529,67 @@ export default function TicketBooking() {
                             </div>
                           </div>
                         )}
-                        {!USDT_TRC20 && !USDT_ERC20 && (
-                          <p className="text-sm text-amber-600 dark:text-amber-400">
-                            Crypto wallet addresses not configured. Add NEXT_PUBLIC_USDT_TRC20_ADDRESS and/or NEXT_PUBLIC_USDT_ERC20_ADDRESS to .env
-                          </p>
-                        )}
                       </div>
+
+                      {/* Transaction hash submission - confirm payment */}
+                      <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+                        <p className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                          Already sent payment? Submit your transaction hash for confirmation
+                        </p>
+                        <form onSubmit={handleCryptoSubmit} className="space-y-3">
+                          <div>
+                            <label className="block text-xs font-medium text-gray-500 mb-1">
+                              Network used
+                            </label>
+                            <select
+                              value={cryptoNetwork}
+                              onChange={(e) =>
+                                setCryptoNetwork(e.target.value as "trc20" | "erc20")
+                              }
+                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none text-sm"
+                            >
+                              <option value="trc20">TRC20 (TRON)</option>
+                              <option value="erc20">ERC20 (Ethereum)</option>
+                            </select>
+                          </div>
+                          <div>
+                            <label className="block text-xs font-medium text-gray-500 mb-1">
+                              Transaction hash (paste from your wallet)
+                            </label>
+                            <input
+                              type="text"
+                              value={txHash}
+                              onChange={(e) => setTxHash(e.target.value)}
+                              placeholder="e.g. 0x123... or abc123..."
+                              className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg bg-white dark:bg-gray-800 focus:border-purple-500 focus:ring-1 focus:ring-purple-500 outline-none text-sm font-mono"
+                            />
+                          </div>
+                          <Button
+                            type="submit"
+                            disabled={
+                              !txHash.trim() || cryptoSubmitStatus === "loading"
+                            }
+                            className="w-full"
+                          >
+                            {cryptoSubmitStatus === "loading"
+                              ? "Submitting..."
+                              : cryptoSubmitStatus === "success"
+                                ? "Submitted"
+                                : "Submit for confirmation"}
+                          </Button>
+                          {cryptoSubmitStatus === "success" && (
+                            <p className="text-sm text-green-600 dark:text-green-400">
+                              Thank you! Your transaction has been submitted. The team will verify and send your tickets to {billingInfo.email} within 24 hours.
+                            </p>
+                          )}
+                          {cryptoSubmitStatus === "error" && (
+                            <p className="text-sm text-red-600 dark:text-red-400">
+                              Something went wrong. Please try again or contact us at officialaprilfull@gmail.com
+                            </p>
+                          )}
+                        </form>
+                      </div>
+
                       <p className="text-xs text-gray-500">
                         After payment, tickets will be sent to <strong>{billingInfo.email}</strong>. Contact us if you don&apos;t receive them within 24 hours.
                       </p>
@@ -507,7 +599,7 @@ export default function TicketBooking() {
                   <div className="flex gap-3 pt-2">
                     <Button
                       variant="outline"
-                      onClick={() => { setStep(2); setPaymentMethod(null); }}
+                      onClick={() => { setStep(2); setPaymentMethod(null); setTxHash(""); setCryptoSubmitStatus("idle"); }}
                       className="flex items-center gap-1"
                     >
                       <ChevronLeft size={18} />
